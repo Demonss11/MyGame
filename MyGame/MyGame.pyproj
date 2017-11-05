@@ -31,6 +31,9 @@
     <Compile Include="alien.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="game_stats.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ship.py">
       <SubType>Code</SubType>
     </Compile>
