@@ -48,13 +48,17 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     aliens.draw(screen)
     pygame.display.flip()
 
-def update_bullets(aliens, bullets, ship):
+def update_bullets(ai_settings, screen, ship, aliens, bullets):
     bullets.update(ship)
         
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True) # первая Тру удаляет пулю, вторая врага. Если поставить фолс, то удалятся не будет.
+
+    if len(aliens) == 0:
+        bullets.empty()
+        create_fleet(ai_settings, screen, ship, aliens)
          
 def fire_bullet(ai_settings,screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
